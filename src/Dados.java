@@ -9,12 +9,16 @@ public class Dados {
 	public static void main(String args[]) {
 
 		try {
-			Path path = Paths.get("C:\\Users\\katha\\Documents\\NumerosOrdenarArquivo.txt");
+			//"C:\\Users\\katha\\Documents\\NumerosOrdenarArquivo.txt"
+			Scanner ler = new Scanner(System.in);
+			System.out.println("Informe o caminho do arquivo");
+			String caminho = ler.nextLine();
+			Path path = Paths.get(caminho);
 			long[] arquivo = Files.lines(path).mapToLong(linha -> Long.parseLong(linha)).toArray();
 
 			Ordenacao ordenacao;
 			System.out.println("Informe um método de ordenação: 1-QuickSort, 2-InsertionSort, 3-MergeSort");
-			Scanner ler = new Scanner(System.in);
+			
 			int opcao = ler.nextInt();
 			switch (opcao) {
 			case 1:
