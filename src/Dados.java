@@ -13,8 +13,7 @@ public class Dados {
 			Scanner ler = new Scanner(System.in);
 			System.out.println("Informe o caminho do arquivo");
 			String caminho = ler.nextLine();
-			Path path = Paths.get(caminho);
-			long[] arquivo = Files.lines(path).mapToLong(linha -> Long.parseLong(linha)).toArray();
+			long[] arquivo = carregarDados(caminho);
 
 			Ordenacao ordenacao;
 			System.out.println("Informe um método de ordenação: 1-QuickSort, 2-InsertionSort, 3-MergeSort");
@@ -65,6 +64,12 @@ public class Dados {
 		} finally {
 			System.out.println("Execução Finalizada!");
 		}
+	}
+
+	private static long[] carregarDados(String caminho) throws IOException {
+		Path path = Paths.get(caminho);
+		long[] arquivo = Files.lines(path).mapToLong(linha -> Long.parseLong(linha)).toArray();
+		return arquivo;
 	}
 
 }
